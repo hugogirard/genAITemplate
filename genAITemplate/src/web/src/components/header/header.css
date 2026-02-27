@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacingHorizontalM);
+    padding: 0 var(--spacingHorizontalL);
+    background: var(--colorBrandBackground);
+    color: #fff;
+    z-index: 10;
+    box-shadow: var(--shadow4);
+    height: var(--header-height);
+}

@@ -1,0 +1,18 @@
+chat-header {
+    grid-area: header;
+    display: block;
+}
+
+chat-sidebar {
+    grid-area: sidebar;
+    display: block;
+    overflow: hidden;
+}
+
+.chat-window {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    background: var(--colorNeutralBackground2);
+    overflow: hidden;
+}
