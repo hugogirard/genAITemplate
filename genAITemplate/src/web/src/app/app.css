@@ -9,6 +9,12 @@ chat-sidebar {
     overflow: hidden;
 }
 
+chat {
+    grid-area: main;
+    display: block;
+    overflow: hidden;
+}
+
 .chat-window {
     grid-area: main;
     display: flex;
