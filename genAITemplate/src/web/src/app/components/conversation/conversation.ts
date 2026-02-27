@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Thread } from "../../models/thread";
 
 
@@ -13,4 +13,9 @@ export class Conversation {
     @Input()
     thread!: Thread;
 
+    @Output() onDelete = new EventEmitter<string>();
+
+    delete(id: string) {
+        this.onDelete.emit(id);
+    }
 }

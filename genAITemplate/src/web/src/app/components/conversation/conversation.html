@@ -1,6 +1,7 @@
 <div class="sidebar__chat-item" [attr.data-chat-id]="thread.id" role="button" tabindex="0">
     <span class="sidebar__chat-title" [title]="thread.title">{{thread.title}}</span>
-    <button class="sidebar__delete-btn" [attr.aria-label]="'Delete ' + thread.title" title="Delete chat">
+    <button class="sidebar__delete-btn" [attr.aria-label]="'Delete ' + thread.title" title="Delete chat"
+        (click)="delete(thread.id)">
         <img src="images/icon-delete.svg" width="14" height="14" alt="" />
     </button>
 </div>

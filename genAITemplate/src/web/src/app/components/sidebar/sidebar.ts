@@ -26,4 +26,26 @@ export class Sidebar {
             this.threads = threads;
         });
     }
+
+    newThread() {
+        this.stateService.isLoading = true;
+        this.chatService.newThread().subscribe(thread => {
+            this.stateService.isLoading = false;
+            this.threads.push(thread);
+        });
+    }
+
+    deleteThread(id: string) {
+
+        this.stateService.isLoading = true;
+        this.chatService.deleteThread(id).subscribe(success => {
+            this.stateService.isLoading = false;
+            if (success) {
+                const index = this.threads.findIndex(t => t.id === id);
+                if (index !== -1) {
+                    this.threads.splice(index, 1);
+                }
+            }
+        });
+    }
 }

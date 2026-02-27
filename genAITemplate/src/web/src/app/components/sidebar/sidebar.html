@@ -1,5 +1,5 @@
 <aside id="sidebar" class="sidebar">
-    <button class="sidebar__new-chat-btn">
+    <button class="sidebar__new-chat-btn" (click)="newThread()">
         <img src="images/icon-plus.svg" width="16" height="16" alt="" />
         <span>New Chat</span>
     </button>
@@ -7,39 +7,8 @@
         <div class="sidebar__group">
             <div class="sidebar__group-label">Today</div>
             @for (thread of threads; track thread.id){
-            <conversation [thread]="thread"></conversation>
+            <conversation [thread]="thread" (onDelete)="deleteThread(thread.id)"></conversation>
             }
         </div>
-        <!-- <div class="sidebar__group">
-            <div class="sidebar__group-label">Today</div>
-            <div class="sidebar__chat-item sidebar__chat-item--active" data-chat-id="chat-1" role="button" tabindex="0">
-                <span class="sidebar__chat-title" title="Project planning discussion">Project planning
-                    discussion</span>
-                <button class="sidebar__delete-btn" aria-label="Delete &quot;Project planning discussion&quot;"
-                    title="Delete chat">
-                    <img src="images/icon-delete.svg" width="14" height="14" alt="" />
-                </button>
-            </div>
-        </div>
-        <div class="sidebar__group">
-            <div class="sidebar__group-label">Yesterday</div>
-            <div class="sidebar__chat-item" data-chat-id="chat-2" role="button" tabindex="0">
-                <span class="sidebar__chat-title" title="Azure deployment questions">Azure deployment questions</span>
-                <button class="sidebar__delete-btn" aria-label="Delete &quot;Azure deployment questions&quot;"
-                    title="Delete chat">
-                    <img src="images/icon-delete.svg" width="14" height="14" alt="" />
-                </button>
-            </div>
-        </div>
-        <div class="sidebar__group">
-            <div class="sidebar__group-label">Previous 7 Days</div>
-            <div class="sidebar__chat-item" data-chat-id="chat-3" role="button" tabindex="0">
-                <span class="sidebar__chat-title" title="Marketing copy review">Marketing copy review</span>
-                <button class="sidebar__delete-btn" aria-label="Delete &quot;Marketing copy review&quot;"
-                    title="Delete chat">
-                    <img src="images/icon-delete.svg" width="14" height="14" alt="" />
-                </button>
-            </div>
-        </div> -->
     </nav>
 </aside>

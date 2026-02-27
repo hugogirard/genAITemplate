@@ -20,4 +20,16 @@ export class ChatService {
         return of(fakeThreads);
     }
 
+    newThread(): Observable<Thread> {
+        const thread: Thread = {
+            id: '10',
+            title: 'How to use Agent Framework'
+        }
+        return of(thread);
+    }
+
+    deleteThread(id: string): Observable<boolean> {
+        return of(true);
+    }
+
 }
