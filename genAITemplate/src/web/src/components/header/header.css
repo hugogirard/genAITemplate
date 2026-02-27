@@ -15,3 +15,12 @@
     box-shadow: var(--shadow4);
     height: var(--header-height);
 }
+
+.app-header__toggle img,
+.app-header__new-chat img {
+    filter: brightness(0) invert(1);
+}
+
+.app-header__logo {
+    border-radius: var(--borderRadiusMedium);
+}
