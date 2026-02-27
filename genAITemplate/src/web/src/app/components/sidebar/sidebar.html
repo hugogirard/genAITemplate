@@ -6,6 +6,12 @@
     <nav class="sidebar__chat-list" aria-label="Chat history">
         <div class="sidebar__group">
             <div class="sidebar__group-label">Today</div>
+            @for (thread of threads; track thread.id){
+            <conversation [thread]="thread"></conversation>
+            }
+        </div>
+        <!-- <div class="sidebar__group">
+            <div class="sidebar__group-label">Today</div>
             <div class="sidebar__chat-item sidebar__chat-item--active" data-chat-id="chat-1" role="button" tabindex="0">
                 <span class="sidebar__chat-title" title="Project planning discussion">Project planning
                     discussion</span>
@@ -34,6 +40,6 @@
                     <img src="images/icon-delete.svg" width="14" height="14" alt="" />
                 </button>
             </div>
-        </div>
+        </div> -->
     </nav>
 </aside>

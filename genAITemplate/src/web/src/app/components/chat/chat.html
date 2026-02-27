@@ -1,0 +1,48 @@
+<main id="chat-window" class="chat-window">
+    <div id="chat-header" class="chat-header">
+        <h2 class="chat-header__title">Project planning discussion</h2><button class="chat-header__rename-btn"
+            aria-label="Rename chat" title="Rename chat"><img src="images/icon-pencil.svg" width="16" height="16"
+                alt="" /></button>
+    </div>
+    <div id="message-list" class="message-list">
+        <div class="message-list__messages">
+            <div class="message-list__item message-list__item--user">
+                <div class="message-avatar message-avatar--user"><img src="images/icon-user.svg" width="20" height="20"
+                        alt="" /></div>
+                <div class="message-bubble message-bubble--user">Can you help me plan our Q3 project milestones?</div>
+                <div class="message-time">09:23 a.m.</div>
+            </div>
+            <div class="message-list__item message-list__item--assistant">
+                <div class="message-avatar message-avatar--assistant"><img src="images/icon-logo.svg" width="20"
+                        height="20" alt="" /></div>
+                <div class="message-bubble message-bubble--assistant">Of course! Let's start by identifying the key
+                    deliverables for Q3. Could you share the main objectives your team is focusing on?</div>
+                <div class="message-time">09:24 a.m.</div>
+            </div>
+            <div class="message-list__item message-list__item--user">
+                <div class="message-avatar message-avatar--user"><img src="images/icon-user.svg" width="20" height="20"
+                        alt="" /></div>
+                <div class="message-bubble message-bubble--user">We need to launch the new customer portal and migrate
+                    the legacy database.</div>
+                <div class="message-time">09:28 a.m.</div>
+            </div>
+            <div class="message-list__item message-list__item--assistant">
+                <div class="message-avatar message-avatar--assistant"><img src="images/icon-logo.svg" width="20"
+                        height="20" alt="" /></div>
+                <div class="message-bubble message-bubble--assistant">Here's a suggested timeline:<br><br><strong>Month
+                        1:</strong> Requirements gathering &amp; design for the portal; begin database
+                    audit.<br><strong>Month 2:</strong> Portal development sprint; start data migration
+                    scripts.<br><strong>Month 3:</strong> QA, UAT, and go-live for both.<br><br>Shall I break these down
+                    further?</div>
+                <div class="message-time">09:29 a.m.</div>
+            </div>
+        </div>
+    </div>
+    <div id="message-input" class="message-input">
+        <form class="message-input__form"><textarea class="message-input__textarea" placeholder="Type a message…"
+                rows="1" aria-label="Chat message"></textarea><button type="submit" class="message-input__send-btn"
+                aria-label="Send message" title="Send message"><img src="images/icon-send.svg" width="20" height="20"
+                    alt="" /></button></form>
+    </div>
+    <div class="chat-window__disclaimer">Contoso AI can make mistakes. Verify important information.</div>
+</main>

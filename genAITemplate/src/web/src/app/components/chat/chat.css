@@ -12,3 +12,11 @@
     height: 100%;
     overflow: hidden;
 }
+
+.message-input__send-btn img {
+    filter: brightness(0) invert(1);
+}
+
+.message-avatar--user img {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%);
+}
