@@ -13,6 +13,10 @@ export class Conversation {
     @Input()
     thread!: Thread;
 
+    @Input()
+    isActive: boolean = false;
+
+    @Output() onSelect = new EventEmitter<string>();
     @Output() onDelete = new EventEmitter<string>();
 
     delete(id: string) {

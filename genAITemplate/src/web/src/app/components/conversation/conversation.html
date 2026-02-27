@@ -1,4 +1,5 @@
-<div class="sidebar__chat-item" [attr.data-chat-id]="thread.id" role="button" tabindex="0">
+<div class="sidebar__chat-item" [class.sidebar__chat-item--active]="isActive" [attr.data-chat-id]="thread.id"
+    role="button" tabindex="0" (click)="onSelect.emit(thread.id)">
     <span class="sidebar__chat-title" [title]="thread.title">{{thread.title}}</span>
     <button class="sidebar__delete-btn" [attr.aria-label]="'Delete ' + thread.title" title="Delete chat"
         (click)="delete(thread.id)">

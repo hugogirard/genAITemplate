@@ -14,6 +14,7 @@ import { Conversation } from "../conversation/conversation";
 export class Sidebar {
 
     threads: Thread[] = [];
+    selectedThreadId: string | null = null;
 
     constructor(private chatService: ChatService, private stateService: StateService) {
         this.getThreadsUser();
@@ -24,7 +25,14 @@ export class Sidebar {
         this.chatService.getThreads().subscribe(threads => {
             this.stateService.isLoading = false;
             this.threads = threads;
+            if (threads.length > 0) {
+                this.selectThread(this.threads[0].id)
+            }
         });
+    }
+
+    selectThread(id: string) {
+        this.selectedThreadId = id;
     }
 
     newThread() {
@@ -32,6 +40,7 @@ export class Sidebar {
         this.chatService.newThread().subscribe(thread => {
             this.stateService.isLoading = false;
             this.threads.push(thread);
+            this.selectedThreadId = thread.id;
         });
     }
 

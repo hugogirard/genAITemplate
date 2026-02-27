@@ -7,7 +7,8 @@
         <div class="sidebar__group">
             <div class="sidebar__group-label">Today</div>
             @for (thread of threads; track thread.id){
-            <conversation [thread]="thread" (onDelete)="deleteThread(thread.id)"></conversation>
+            <conversation [thread]="thread" [isActive]="thread.id === selectedThreadId"
+                (onSelect)="selectThread(thread.id)" (onDelete)="deleteThread(thread.id)"></conversation>
             }
         </div>
     </nav>
