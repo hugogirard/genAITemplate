@@ -1,0 +1,544 @@
+/* ============================================================
+   Contoso Chat – Fluent UI 2 Web Components Theme Overrides
+   Uses Fluent UI design tokens (colors, typography, spacing).
+   ============================================================ */
+
+/* ─── CSS Custom Properties (Fluent-aligned) ─────────────── */
+:root {
+    --colorBrandBackground: #0078D4;
+    --colorBrandBackgroundHover: #106EBE;
+    --colorBrandForegroundOnLight: #0078D4;
+    --colorNeutralBackground1: #FFFFFF;
+    --colorNeutralBackground2: #F5F5F5;
+    --colorNeutralBackground3: #EBEBEB;
+    --colorNeutralBackground4: #E0E0E0;
+    --colorNeutralForeground1: #242424;
+    --colorNeutralForeground2: #616161;
+    --colorNeutralForeground3: #9E9E9E;
+    --colorNeutralStroke1: #E0E0E0;
+    --colorNeutralStroke2: #D1D1D1;
+    --colorSubtleBackground: transparent;
+    --colorSubtleBackgroundHover: rgba(0, 0, 0, 0.04);
+    --colorSubtleBackgroundPressed: rgba(0, 0, 0, 0.06);
+    --colorPaletteRedBackground3: #FDE7E9;
+    --shadow4: 0 2px 4px rgba(0, 0, 0, 0.14);
+    --shadow8: 0 4px 8px rgba(0, 0, 0, 0.14);
+    --borderRadiusMedium: 4px;
+    --borderRadiusLarge: 8px;
+    --borderRadiusXLarge: 12px;
+    --fontFamilyBase: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+    --fontSizeBase200: 12px;
+    --fontSizeBase300: 14px;
+    --fontSizeBase400: 16px;
+    --fontSizeBase500: 20px;
+    --fontWeightRegular: 400;
+    --fontWeightSemibold: 600;
+    --spacingHorizontalXS: 4px;
+    --spacingHorizontalS: 8px;
+    --spacingHorizontalM: 12px;
+    --spacingHorizontalL: 16px;
+    --spacingHorizontalXL: 20px;
+    --spacingVerticalXS: 4px;
+    --spacingVerticalS: 8px;
+    --spacingVerticalM: 12px;
+    --spacingVerticalL: 16px;
+
+    --sidebar-width: 280px;
+    --header-height: 48px;
+}
+
+/* ─── Reset & Base ───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    color: var(--colorNeutralForeground1);
+    background: var(--colorNeutralBackground2);
+    overflow: hidden;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    background: var(--colorSubtleBackground);
+    color: inherit;
+    border-radius: var(--borderRadiusMedium);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s;
+}
+
+button:hover {
+    background: var(--colorSubtleBackgroundHover);
+}
+
+button:active {
+    background: var(--colorSubtleBackgroundPressed);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--colorBrandBackground);
+    outline-offset: 1px;
+}
+
+/* ─── App Layout ─────────────────────────────────────────── */
+#app {
+    display: grid;
+    grid-template-rows: var(--header-height) 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-areas:
+        "header  header"
+        "sidebar main";
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ─── App Header (contoso-app-header) ────────────────────── */
+.app-header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    gap: var(--spacingHorizontalM);
+    padding: 0 var(--spacingHorizontalL);
+    background: var(--colorBrandBackground);
+    color: #fff;
+    z-index: 10;
+    box-shadow: var(--shadow4);
+}
+
+.app-header__toggle {
+    color: #fff;
+    width: 36px;
+    height: 36px;
+}
+
+.app-header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacingHorizontalS);
+    flex: 1;
+}
+
+.app-header__logo {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--borderRadiusMedium);
+}
+
+.app-header__title {
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    white-space: nowrap;
+}
+
+.app-header__new-chat {
+    color: #fff;
+    width: 36px;
+    height: 36px;
+}
+
+/* ─── Sidebar (contoso-sidebar) ──────────────────────────── */
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    background: var(--colorNeutralBackground1);
+    border-right: 1px solid var(--colorNeutralStroke1);
+    overflow: hidden;
+    transition: width 0.2s ease, opacity 0.2s ease;
+    width: var(--sidebar-width);
+}
+
+.sidebar--collapsed {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar__new-chat-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacingHorizontalS);
+    margin: var(--spacingVerticalM) var(--spacingHorizontalM);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalM);
+    background: var(--colorBrandBackground);
+    color: #fff;
+    font-weight: var(--fontWeightSemibold);
+    font-size: var(--fontSizeBase300);
+    border-radius: var(--borderRadiusMedium);
+    width: calc(100% - 2 * var(--spacingHorizontalM));
+}
+
+.sidebar__new-chat-btn:hover {
+    background: var(--colorBrandBackgroundHover);
+}
+
+.sidebar__chat-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacingVerticalXS) 0;
+}
+
+.sidebar__group {
+    margin-bottom: var(--spacingVerticalS);
+}
+
+.sidebar__group-label {
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    color: var(--colorNeutralForeground3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: var(--spacingVerticalS) var(--spacingHorizontalL) var(--spacingVerticalXS);
+}
+
+.sidebar__chat-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacingHorizontalS);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalL);
+    cursor: pointer;
+    transition: background 0.1s;
+    position: relative;
+}
+
+.sidebar__chat-item:hover {
+    background: var(--colorSubtleBackgroundHover);
+}
+
+.sidebar__chat-item--active {
+    background: var(--colorNeutralBackground3);
+}
+
+.sidebar__chat-title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--fontSizeBase300);
+}
+
+.sidebar__delete-btn {
+    width: 28px;
+    height: 28px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    color: var(--colorNeutralForeground2);
+    flex-shrink: 0;
+}
+
+.sidebar__chat-item:hover .sidebar__delete-btn {
+    opacity: 1;
+}
+
+.sidebar__empty {
+    text-align: center;
+    color: var(--colorNeutralForeground3);
+    padding: var(--spacingVerticalL) var(--spacingHorizontalL);
+    font-size: var(--fontSizeBase300);
+}
+
+/* ─── Chat Window (contoso-chat-window) ──────────────────── */
+.chat-window {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    background: var(--colorNeutralBackground2);
+    overflow: hidden;
+}
+
+/* ─── Chat Header (contoso-chat-header) ──────────────────── */
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacingVerticalS) var(--spacingHorizontalXL);
+    background: var(--colorNeutralBackground1);
+    border-bottom: 1px solid var(--colorNeutralStroke1);
+    min-height: 44px;
+}
+
+.chat-header__title {
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.chat-header__rename-btn {
+    width: 32px;
+    height: 32px;
+    color: var(--colorNeutralForeground2);
+}
+
+/* ─── Message List (contoso-message-list) ────────────────── */
+.message-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacingVerticalL) 0;
+}
+
+.message-list__messages {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 var(--spacingHorizontalXL);
+}
+
+/* Welcome screen */
+.message-list__welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px var(--spacingHorizontalXL) 40px;
+    text-align: center;
+}
+
+.message-list__welcome svg {
+    width: 56px;
+    height: 56px;
+    margin-bottom: var(--spacingVerticalL);
+}
+
+.message-list__welcome h2 {
+    font-size: 24px;
+    font-weight: var(--fontWeightSemibold);
+    margin-bottom: var(--spacingVerticalS);
+}
+
+.message-list__welcome p {
+    color: var(--colorNeutralForeground2);
+    font-size: var(--fontSizeBase400);
+}
+
+/* Message items */
+.message-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacingHorizontalM);
+    margin-bottom: var(--spacingVerticalL);
+}
+
+.message-list__item--user {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.message-avatar--assistant {
+    background: var(--colorBrandBackground);
+    color: #fff;
+}
+
+.message-avatar--user {
+    background: var(--colorNeutralBackground4);
+    color: var(--colorNeutralForeground2);
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: var(--spacingVerticalM) var(--spacingHorizontalL);
+    border-radius: var(--borderRadiusXLarge);
+    line-height: 1.5;
+    font-size: var(--fontSizeBase300);
+    word-wrap: break-word;
+}
+
+.message-bubble--assistant {
+    background: var(--colorNeutralBackground1);
+    border: 1px solid var(--colorNeutralStroke1);
+    border-top-left-radius: var(--borderRadiusMedium);
+}
+
+.message-bubble--user {
+    background: var(--colorBrandBackground);
+    color: #fff;
+    border-top-right-radius: var(--borderRadiusMedium);
+}
+
+.message-time {
+    align-self: flex-end;
+    font-size: var(--fontSizeBase200);
+    color: var(--colorNeutralForeground3);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Typing indicator */
+.message-list__typing {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacingHorizontalM);
+    margin-bottom: var(--spacingVerticalL);
+}
+
+.typing-dots {
+    display: flex;
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.typing-dots span {
+    width: 8px;
+    height: 8px;
+    background: var(--colorNeutralForeground3);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ─── Message Input (contoso-message-input) ──────────────── */
+.message-input {
+    padding: var(--spacingVerticalM) var(--spacingHorizontalXL) var(--spacingVerticalL);
+    background: var(--colorNeutralBackground2);
+}
+
+.message-input__form {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacingHorizontalS);
+    max-width: 768px;
+    margin: 0 auto;
+    background: var(--colorNeutralBackground1);
+    border: 1px solid var(--colorNeutralStroke1);
+    border-radius: var(--borderRadiusXLarge);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS) var(--spacingVerticalS) var(--spacingHorizontalL);
+    box-shadow: var(--shadow4);
+    transition: border-color 0.15s;
+}
+
+.message-input__form:focus-within {
+    border-color: var(--colorBrandBackground);
+}
+
+.message-input__textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    line-height: 1.5;
+    padding: var(--spacingVerticalXS) 0;
+    background: transparent;
+    color: var(--colorNeutralForeground1);
+    max-height: 150px;
+}
+
+.message-input__textarea::placeholder {
+    color: var(--colorNeutralForeground3);
+}
+
+.message-input__send-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--colorBrandBackground);
+    color: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.message-input__send-btn:hover {
+    background: var(--colorBrandBackgroundHover);
+}
+
+.message-input__send-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.message-input--disabled .message-input__form {
+    opacity: 0.6;
+}
+
+/* ─── Disclaimer ─────────────────────────────────────────── */
+.chat-window__disclaimer {
+    text-align: center;
+    font-size: var(--fontSizeBase200);
+    color: var(--colorNeutralForeground3);
+    padding: 0 var(--spacingHorizontalL) var(--spacingVerticalS);
+}
+
+/* ─── Scrollbar Styling ──────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--colorNeutralStroke2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--colorNeutralForeground3);
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    #app {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main";
+    }
+
+    .sidebar {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        z-index: 20;
+        box-shadow: var(--shadow8);
+    }
+
+    .sidebar--collapsed {
+        width: 0;
+    }
+}

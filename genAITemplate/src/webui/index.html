@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoso Chat</title>
+
+    <!-- Fluent UI Web Components (CDN) -->
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+
+    <!-- App Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Favicon (inline SVG as data URI) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='6' fill='%230078D4'/><rect x='7' y='10' width='14' height='11' rx='3' fill='white'/><circle cx='11' cy='15' r='1.5' fill='%230078D4'/><circle cx='17' cy='15' r='1.5' fill='%230078D4'/><rect x='12' y='18' width='4' height='1.2' rx='0.6' fill='%230078D4'/><rect x='12.5' y='6' width='3' height='4' rx='1.5' fill='white'/><circle cx='14' cy='5.5' r='1.5' fill='white'/></svg>" />
+</head>
+
+<body>
+
+    <!-- ============================================================
+       COMPONENT: <contoso-app>
+       Root application shell. Owns layout grid.
+       ============================================================ -->
+    <div id="app">
+
+        <!-- ──────────────────────────────────────────────────────────
+         COMPONENT: <contoso-app-header>
+         Top bar with Contoso logo, sidebar toggle, and new-chat button.
+         File: js/components/AppHeader.js
+         ────────────────────────────────────────────────────────── -->
+        <header id="app-header"></header>
+
+        <!-- ──────────────────────────────────────────────────────────
+         COMPONENT: <contoso-sidebar>
+         Left panel: "New Chat" button + grouped chat-history list.
+         File: js/components/Sidebar.js
+         ────────────────────────────────────────────────────────── -->
+        <aside id="sidebar"></aside>
+
+        <!-- ──────────────────────────────────────────────────────────
+         COMPONENT: <contoso-chat-window>
+         Main content area composed of:
+           - <contoso-chat-header>   → js/components/ChatHeader.js
+           - <contoso-message-list>  → js/components/MessageList.js
+           - <contoso-message-input> → js/components/MessageInput.js
+         File: js/components/ChatWindow.js
+         ────────────────────────────────────────────────────────── -->
+        <main id="chat-window"></main>
+
+    </div>
+
+    <!-- App Entry Point (ES modules) -->
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>
